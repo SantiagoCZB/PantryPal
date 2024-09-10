@@ -12,6 +12,7 @@
 		D0BD34352C909DEA003CEAFC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD34342C909DEA003CEAFC /* ContentView.swift */; };
 		D0BD34372C909DEA003CEAFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BD34362C909DEA003CEAFC /* Assets.xcassets */; };
 		D0BD343A2C909DEA003CEAFC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BD34392C909DEA003CEAFC /* Preview Assets.xcassets */; };
+		FB1642592C90A2B400CF1B82 /* AgregarIngredientesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		D0BD34342C909DEA003CEAFC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0BD34362C909DEA003CEAFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0BD34392C909DEA003CEAFC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarIngredientesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 				D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */,
 				D0BD34342C909DEA003CEAFC /* ContentView.swift */,
 				D06E06FC2C909FE000918272 /* MainView.swift */,
+				FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */,
 				D0BD34362C909DEA003CEAFC /* Assets.xcassets */,
 				D0BD34382C909DEA003CEAFC /* Preview Content */,
 			);
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0BD34352C909DEA003CEAFC /* ContentView.swift in Sources */,
+				FB1642592C90A2B400CF1B82 /* AgregarIngredientesView.swift in Sources */,
 				D06E06FD2C909FE000918272 /* MainView.swift in Sources */,
 				D0BD34332C909DEA003CEAFC /* PantryPalApp.swift in Sources */,
 			);
