@@ -16,17 +16,16 @@ struct MainView: View {
             Spacer(minLength: 20)
             
             // La vista seleccionada se renderiza aquí.
-           /* switch selectedTab {
+            switch selectedTab {
             case 0:
-                DashboardView()
-            case 1:
-                TiendaView()
-            case 2:
-                PerfilView()
+                IngredientesView()
+            //case 1:
+              //  TiendaView()
+            //case 2:
+               // PerfilView()
             default:
-                DashboardView()
+                IngredientesView()
             }
-            */
             Spacer(minLength: 40)
             
             HStack {
