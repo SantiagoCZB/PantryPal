@@ -2,16 +2,22 @@ import SwiftUI
 
 struct AgregarIngredientesView: View {
     @State private var nuevoIngrediente: String = ""
-    @State private var ingredientes: [String] = []
+    @State private var nuevaCantidad: String = ""
+    @State private var ingredientes: [(nombre: String, cantidad: String)] = []
 
     var body: some View {
         NavigationView {
             VStack {
-                // Campo para agregar ingredientes
+                // Campo para agregar ingredientes y su cantidad
                 HStack {
-                    TextField("Agrega un ingrediente", text: $nuevoIngrediente)
+                    TextField("Ingrediente", text: $nuevoIngrediente)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding(.leading, 10)
+                    
+                    TextField("Cantidad", text: $nuevaCantidad)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .frame(width: 80) // Tamaño pequeño para cantidad
+                        .keyboardType(.numberPad)
                     
                     // Botón para agregar ingrediente
                     Button(action: agregarIngrediente) {
@@ -24,7 +30,7 @@ struct AgregarIngredientesView: View {
                 
                 // Lista de ingredientes agregados
                 List {
-                    ForEach(ingredientes, id: \.self) { ingrediente in
+                    ForEach(ingredientes, id: \.nombre) { ingrediente in
                         HStack {
                             // Botón para borrar ingrediente
                             Button(action: {
@@ -35,18 +41,11 @@ struct AgregarIngredientesView: View {
                             }
                             .padding(.trailing, 10)
                             
-                            // Texto del ingrediente
-                            Text(ingrediente)
+                            // Texto del ingrediente y su cantidad
+                            Text("\(ingrediente.nombre) - \(ingrediente.cantidad)")
                             
                             Spacer()
                             
-                            // Botón para agregar (puede usarse para otras funciones)
-                            Button(action: {
-                                // Acción para agregar o alguna otra acción
-                            }) {
-                                Image(systemName: "arrow.right.circle")
-                                    .foregroundColor(.green)
-                            }
                         }
                     }
                     .onDelete(perform: eliminarIngredientes)
@@ -55,6 +54,7 @@ struct AgregarIngredientesView: View {
                 // Botón para finalizar o agregar todos los ingredientes
                 Button(action: {
                     // Acción al finalizar la adición de ingredientes
+                    print("Agregar ingredientes: \(ingredientes)")
                 }) {
                     Text("Agregar Ingredientes")
                         .foregroundColor(.white)
@@ -67,29 +67,34 @@ struct AgregarIngredientesView: View {
                 .padding(.bottom, 10)
             }
             .navigationBarTitle("Agregar Ingrediente", displayMode: .inline)
-            .navigationBarItems(leading: Button("Regresar") {
-                // Acción de regresar
-            })
         }
     }
     
     // Función para agregar un ingrediente
     private func agregarIngrediente() {
-        guard !nuevoIngrediente.isEmpty else { return }
-        ingredientes.append(nuevoIngrediente)
+        guard !nuevoIngrediente.isEmpty, !nuevaCantidad.isEmpty else {
+            print("Error: Ingrediente o cantidad vacío")
+            return
+        }
+        ingredientes.append((nombre: nuevoIngrediente, cantidad: nuevaCantidad))
+        print("Ingrediente agregado: \(nuevoIngrediente) - Cantidad: \(nuevaCantidad)")
+        print(ingredientes)
         nuevoIngrediente = ""
+        nuevaCantidad = ""
     }
     
     // Función para eliminar un ingrediente específico
-    private func eliminarIngrediente(_ ingrediente: String) {
-        if let index = ingredientes.firstIndex(of: ingrediente) {
+    private func eliminarIngrediente(_ ingrediente: (nombre: String, cantidad: String)) {
+        if let index = ingredientes.firstIndex(where: { $0.nombre == ingrediente.nombre }) {
             ingredientes.remove(at: index)
+            print("Ingrediente eliminado: \(ingrediente.nombre)")
         }
     }
     
     // Función para eliminar varios ingredientes
     private func eliminarIngredientes(at offsets: IndexSet) {
         ingredientes.remove(atOffsets: offsets)
+        print("Ingredientes eliminados en índices: \(offsets)")
     }
 }
 
@@ -97,8 +102,4 @@ struct IngredientesView_Previews: PreviewProvider {
     static var previews: some View {
         AgregarIngredientesView()
     }
-}
-
-#Preview {
-    AgregarIngredientesView()
 }
