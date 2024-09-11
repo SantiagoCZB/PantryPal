@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		D05155122C91F1820001E1B4 /* Receta.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05155112C91F1820001E1B4 /* Receta.swift */; };
+		D05155142C9200A60001E1B4 /* RecetaDetalleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05155132C9200A60001E1B4 /* RecetaDetalleView.swift */; };
+		D05155162C9200D60001E1B4 /* RecetaDetalle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05155152C9200D60001E1B4 /* RecetaDetalle.swift */; };
 		D0BD34332C909DEA003CEAFC /* PantryPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */; };
-		D0BD34352C909DEA003CEAFC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD34342C909DEA003CEAFC /* ContentView.swift */; };
 		D0BD34372C909DEA003CEAFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BD34362C909DEA003CEAFC /* Assets.xcassets */; };
 		D0BD343A2C909DEA003CEAFC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BD34392C909DEA003CEAFC /* Preview Assets.xcassets */; };
 		FB1642592C90A2B400CF1B82 /* AgregarIngredientesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */; };
@@ -19,9 +20,10 @@
 
 /* Begin PBXFileReference section */
 		D05155112C91F1820001E1B4 /* Receta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receta.swift; sourceTree = "<group>"; };
+		D05155132C9200A60001E1B4 /* RecetaDetalleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaDetalleView.swift; sourceTree = "<group>"; };
+		D05155152C9200D60001E1B4 /* RecetaDetalle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetaDetalle.swift; sourceTree = "<group>"; };
 		D0BD342F2C909DEA003CEAFC /* PantryPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PantryPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryPalApp.swift; sourceTree = "<group>"; };
-		D0BD34342C909DEA003CEAFC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0BD34362C909DEA003CEAFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0BD34392C909DEA003CEAFC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarIngredientesView.swift; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 			isa = PBXGroup;
 			children = (
 				D05155112C91F1820001E1B4 /* Receta.swift */,
+				D05155152C9200D60001E1B4 /* RecetaDetalle.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -69,10 +72,10 @@
 			children = (
 				D05155102C91F1510001E1B4 /* Models */,
 				D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */,
-				D0BD34342C909DEA003CEAFC /* ContentView.swift */,
 				FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */,
 				FBA2A88A2C90B7CA00478F97 /* IngredientesView.swift */,
 				FB16425A2C91F41000CF1B82 /* RecetasView.swift */,
+				D05155132C9200A60001E1B4 /* RecetaDetalleView.swift */,
 				D0BD34362C909DEA003CEAFC /* Assets.xcassets */,
 				D0BD34382C909DEA003CEAFC /* Preview Content */,
 			);
@@ -157,12 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0BD34352C909DEA003CEAFC /* ContentView.swift in Sources */,
 				FBA2A88B2C90B7CA00478F97 /* IngredientesView.swift in Sources */,
 				FB1642592C90A2B400CF1B82 /* AgregarIngredientesView.swift in Sources */,
 				D05155122C91F1820001E1B4 /* Receta.swift in Sources */,
 				FB16425B2C91F41000CF1B82 /* RecetasView.swift in Sources */,
+				D05155162C9200D60001E1B4 /* RecetaDetalle.swift in Sources */,
 				D0BD34332C909DEA003CEAFC /* PantryPalApp.swift in Sources */,
+				D05155142C9200A60001E1B4 /* RecetaDetalleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
