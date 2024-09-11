@@ -1,56 +1,88 @@
 import SwiftUI
 
 struct AgregarIngredientesView: View {
-    @Binding var ingredientes: [String] // Updated to only keep ingredient names
-    @State private var nuevoIngrediente: String = ""
-    @Environment(\.presentationMode) var presentationMode
-
+    @Binding var ingredientes: [String] // Lista de ingredientes
+    @State private var nuevoIngrediente = "" // Para almacenar el nuevo ingrediente temporalmente
+    @State private var keyboardOffset: CGFloat = 0 // Para ajustar la vista cuando aparece el teclado
+    
     var body: some View {
         VStack {
-            // Campo para agregar ingredientes
+            // Lista de ingredientes, que se va llenando desde abajo
+            ScrollViewReader { scrollView in
+                ScrollView {
+                    VStack {
+                        ForEach(ingredientes, id: \.self) { ingrediente in
+                            Text(ingrediente)
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color(.systemGray6))
+                                .cornerRadius(8)
+                                .padding(.horizontal)
+                        }
+                    }
+                    .padding(.top, 10)
+                }
+                .onAppear {
+                    scrollToBottom(scrollView)
+                }
+                .onChange(of: ingredientes) {
+                    scrollToBottom(scrollView)
+                }
+            }
+            
+            Spacer() // Asegura que el TextField y el botón estén abajo
+            
+            // TextField y botón para agregar ingredientes
             HStack {
                 TextField("Ingrediente", text: $nuevoIngrediente)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.leading, 10)
-                
-                // Botón para agregar ingrediente
+                    .padding(.leading, 15)
+                    .frame(height: 40)
+                    .background(Color(.systemGray6))
+                    .cornerRadius(8)
+
                 Button(action: agregarIngrediente) {
                     Image(systemName: "plus.circle.fill")
                         .foregroundColor(.blue)
-                        .padding(.trailing, 10)
+                        .font(.system(size: 30))
                 }
+                .padding(.trailing, 15)
             }
-            .padding(.vertical, 10)
-            
-            // Lista de ingredientes agregados (para visualización)
-            List {
-                ForEach(ingredientes, id: \.self) { ingrediente in
-                    HStack {
-                        Text(ingrediente)
-                        Spacer()
+            .padding()
+            .offset(y: -keyboardOffset) // Ajuste con el teclado
+            .animation(.easeInOut, value: keyboardOffset)
+            .onAppear {
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                    if let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                        self.keyboardOffset = frame.height
                     }
                 }
+                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                    self.keyboardOffset = 0
+                }
             }
         }
-        .navigationBarTitle("Agregar Ingrediente", displayMode: .inline)
+        .padding(.bottom, keyboardOffset)
+        .animation(.easeInOut(duration: 0.3), value: keyboardOffset)
     }
     
-    // Función para agregar un ingrediente
     private func agregarIngrediente() {
-        guard !nuevoIngrediente.isEmpty else {
-            print("Error: Ingrediente vacío")
-            return
+        // Asegurarse de que el campo no esté vacío
+        if !nuevoIngrediente.isEmpty {
+            ingredientes.append(nuevoIngrediente) // Agregar el nuevo ingrediente a la lista
+            nuevoIngrediente = "" // Limpiar el campo después de agregar
         }
-        ingredientes.append(nuevoIngrediente)
-        print("Ingrediente agregado: \(nuevoIngrediente)")
-        
-        // Limpia el campo para agregar más ingredientes
-        nuevoIngrediente = ""
+    }
+    
+    private func scrollToBottom(_ scrollView: ScrollViewProxy) {
+        DispatchQueue.main.async {
+            if let lastItem = ingredientes.last {
+                scrollView.scrollTo(lastItem, anchor: .bottom)
+            }
+        }
     }
 }
 
-struct AgregarIngredientesView_Previews: PreviewProvider {
-    static var previews: some View {
-        AgregarIngredientesView(ingredientes: .constant([]))
-    }
+#Preview {
+    AgregarIngredientesView(ingredientes: .constant(["Pollo", "Tomate", "Pan", "Lechuga"]))
 }

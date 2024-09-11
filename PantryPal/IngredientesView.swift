@@ -4,93 +4,68 @@ struct IngredientesView: View {
     @State private var ingredientes: [String] = []
     @State private var showAgregarIngredientes = false
     @State private var recetas: [Receta] = [] // Array para guardar las recetas
+    @State private var showRecetasView = false // Variable para manejar la navegación
 
     var body: some View {
-        VStack {
-            HStack {
-                Text("PantryPal")
-                    .foregroundStyle(.blue)
-                Spacer()
-            }
-            .padding(.leading, 15.0)
-            
-            HStack {
-                Text("Ingredientes")
-                    .font(.largeTitle)
-                    .bold()
-                Spacer()
-            }
-            .padding(.leading, 15.0)
-            
-            List(ingredientes, id: \.self) { ingrediente in
+        NavigationView {
+            VStack {
                 HStack {
-                    Text("\(ingrediente)")
+                    Text("PantryPal")
+                        .foregroundStyle(.blue)
                     Spacer()
                 }
-            }
-            .navigationTitle("Ingredientes")
-            
-            Button(action: {
-                showAgregarIngredientes = true
-            }) {
-                Text("Agregar Ingredientes")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 10)
-            }
-            .sheet(isPresented: $showAgregarIngredientes) {
-                AgregarIngredientesView(ingredientes: $ingredientes)
-            }
-            .padding(.bottom, 10)
-            
-            Button(action: {
-                fetchRecetas() // Llamar a la función para hacer el fetch
-            }) {
-                Text("Buscar Recetas")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.green)
-                    .cornerRadius(10)
-                    .padding(.horizontal, 10)
-            }
-            
-            // Sección para mostrar las recetas obtenidas
-            if !recetas.isEmpty {
-                Text("Recetas Encontradas")
-                    .font(.headline)
-                    .padding(.top)
+                .padding(.leading, 15.0)
                 
-                List(recetas) { receta in
+                HStack {
+                    Text("Ingredientes")
+                        .font(.largeTitle)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.leading, 15.0)
+                
+                List(ingredientes, id: \.self) { ingrediente in
                     HStack {
-                        VStack(alignment: .leading) {
-                            Text(receta.title)
-                                .font(.headline)
-                            Text("ID: \(receta.id)")
-                                .font(.subheadline)
-                        }
-                        
+                        Text("\(ingrediente)")
                         Spacer()
-                        
-                        AsyncImage(url: URL(string: receta.image)) { image in
-                            image
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(width: 80, height: 80)
-                        } placeholder: {
-                            ProgressView()
-                        }
                     }
                 }
-            } else {
-                Text("No se encontraron recetas aún.")
-                    .padding(.top)
+                
+                Button(action: {
+                    showAgregarIngredientes = true
+                }) {
+                    Text("Agregar Ingredientes")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 10)
+                }
+                .sheet(isPresented: $showAgregarIngredientes) {
+                    AgregarIngredientesView(ingredientes: $ingredientes)
+                }
+                .padding(.bottom, 10)
+                
+                Button(action: {
+                    fetchRecetas() // Llamar a la función para hacer el fetch
+                }) {
+                    Text("Buscar Recetas")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 10)
+                }
+                
+                // Agregar NavigationLink para navegar a la vista de recetas
+                NavigationLink(destination: RecetasView(recetas: recetas), isActive: $showRecetasView) {
+                    EmptyView()
+                }
             }
+            .padding()
         }
-        .padding()
     }
     
     // Función para hacer fetch a la API de Spoonacular
@@ -119,6 +94,7 @@ struct IngredientesView: View {
                 let recetasResponse = try JSONDecoder().decode([Receta].self, from: data)
                 DispatchQueue.main.async {
                     self.recetas = recetasResponse
+                    self.showRecetasView = true // Navegar a la vista de recetas
                 }
             } catch {
                 print("Error al decodificar la respuesta: \(error)")
