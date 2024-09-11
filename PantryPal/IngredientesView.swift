@@ -71,7 +71,8 @@ struct IngredientesView: View {
     // Función para hacer fetch a la API de Spoonacular
     private func fetchRecetas() {
         let ingredientesQuery = ingredientes.joined(separator: ",")
-        let apiKey = "ee0e5dfda0b94ae2a6bf5dbb4a9195af"
+        //let apiKey = "ee0e5dfda0b94ae2a6bf5dbb4a9195af"
+        let apiKey = "8e74f15038a444c7848a62e689a74c66"
         let urlString = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=\(ingredientesQuery)&apiKey=\(apiKey)&number=5&ranking=2&ignorePantry=true"
         
         guard let url = URL(string: urlString) else {
