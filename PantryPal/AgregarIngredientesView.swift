@@ -1,23 +1,17 @@
 import SwiftUI
 
 struct AgregarIngredientesView: View {
-    @Binding var ingredientes: [(nombre: String, cantidad: String)]
+    @Binding var ingredientes: [String] // Updated to only keep ingredient names
     @State private var nuevoIngrediente: String = ""
-    @State private var nuevaCantidad: String = ""
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
-            // Campo para agregar ingredientes y su cantidad
+            // Campo para agregar ingredientes
             HStack {
                 TextField("Ingrediente", text: $nuevoIngrediente)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.leading, 10)
-                
-                TextField("Cantidad", text: $nuevaCantidad)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .frame(width: 80) // Tamaño pequeño para cantidad
-                    .keyboardType(.numberPad)
                 
                 // Botón para agregar ingrediente
                 Button(action: agregarIngrediente) {
@@ -30,9 +24,9 @@ struct AgregarIngredientesView: View {
             
             // Lista de ingredientes agregados (para visualización)
             List {
-                ForEach(ingredientes, id: \.nombre) { ingrediente in
+                ForEach(ingredientes, id: \.self) { ingrediente in
                     HStack {
-                        Text("\(ingrediente.nombre) - \(ingrediente.cantidad)")
+                        Text(ingrediente)
                         Spacer()
                     }
                 }
@@ -43,16 +37,15 @@ struct AgregarIngredientesView: View {
     
     // Función para agregar un ingrediente
     private func agregarIngrediente() {
-        guard !nuevoIngrediente.isEmpty, !nuevaCantidad.isEmpty else {
-            print("Error: Ingrediente o cantidad vacío")
+        guard !nuevoIngrediente.isEmpty else {
+            print("Error: Ingrediente vacío")
             return
         }
-        ingredientes.append((nombre: nuevoIngrediente, cantidad: nuevaCantidad))
-        print("Ingrediente agregado: \(nuevoIngrediente) - Cantidad: \(nuevaCantidad)")
+        ingredientes.append(nuevoIngrediente)
+        print("Ingrediente agregado: \(nuevoIngrediente)")
         
-        // Limpia los campos para agregar más ingredientes
+        // Limpia el campo para agregar más ingredientes
         nuevoIngrediente = ""
-        nuevaCantidad = ""
     }
 }
 

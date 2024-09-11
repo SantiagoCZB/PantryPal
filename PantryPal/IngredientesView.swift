@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IngredientesView: View {
-    @State private var ingredientes: [(nombre: String, cantidad: String)] = []
+    @State private var ingredientes: [String] = []
     @State private var showAgregarIngredientes = false
 
     var body: some View {
@@ -29,9 +29,9 @@ struct IngredientesView: View {
             }
             .padding(.leading, 15.0)
             
-            List(ingredientes, id: \.nombre) { ingrediente in
+            List(ingredientes, id: \.self) { ingrediente in
                 HStack {
-                    Text("\(ingrediente.nombre) - \(ingrediente.cantidad)")
+                    Text("\(ingrediente)")
                     Spacer()
                 }
             }
