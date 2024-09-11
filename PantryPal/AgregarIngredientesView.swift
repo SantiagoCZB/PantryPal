@@ -1,33 +1,23 @@
 import SwiftUI
 
 struct AgregarIngredientesView: View {
-    @Binding var ingredientes: [String] 
+    @Binding var ingredientes: [String]
     @State private var nuevoIngrediente = ""
     @State private var keyboardOffset: CGFloat = 0
     
     var body: some View {
         VStack {
-
-            ScrollViewReader { scrollView in
-                ScrollView {
-                    VStack {
-                        ForEach(ingredientes, id: \.self) { ingrediente in
-                            Text(ingrediente)
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(8)
-                                .padding(.horizontal)
-                        }
-                    }
-                    .padding(.top, 10)
+            // Cambiar ScrollView a List para soportar swipe-to-delete
+            List {
+                ForEach(ingredientes, id: \.self) { ingrediente in
+                    Text(ingrediente)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
+                        .padding(.vertical, 5)
                 }
-                .onAppear {
-                    scrollToBottom(scrollView)
-                }
-                .onChange(of: ingredientes) {
-                    scrollToBottom(scrollView)
-                }
+                .onDelete(perform: eliminarIngrediente) // Soporte para eliminar al deslizar
             }
             
             Spacer()
@@ -66,19 +56,14 @@ struct AgregarIngredientesView: View {
     }
     
     private func agregarIngrediente() {
-      
         if !nuevoIngrediente.isEmpty {
             ingredientes.append(nuevoIngrediente)
             nuevoIngrediente = ""
         }
     }
     
-    private func scrollToBottom(_ scrollView: ScrollViewProxy) {
-        DispatchQueue.main.async {
-            if let lastItem = ingredientes.last {
-                scrollView.scrollTo(lastItem, anchor: .bottom)
-            }
-        }
+    private func eliminarIngrediente(at offsets: IndexSet) {
+        ingredientes.remove(atOffsets: offsets)
     }
 }
 
