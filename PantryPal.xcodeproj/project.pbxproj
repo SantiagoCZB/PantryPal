@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D05155122C91F1820001E1B4 /* Receta.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05155112C91F1820001E1B4 /* Receta.swift */; };
 		D06E06FD2C909FE000918272 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06E06FC2C909FE000918272 /* MainView.swift */; };
 		D0BD34332C909DEA003CEAFC /* PantryPalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */; };
 		D0BD34352C909DEA003CEAFC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0BD34342C909DEA003CEAFC /* ContentView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D05155112C91F1820001E1B4 /* Receta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receta.swift; sourceTree = "<group>"; };
 		D06E06FC2C909FE000918272 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		D0BD342F2C909DEA003CEAFC /* PantryPal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PantryPal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PantryPalApp.swift; sourceTree = "<group>"; };
@@ -38,6 +40,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D05155102C91F1510001E1B4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D05155112C91F1820001E1B4 /* Receta.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D0BD34262C909DEA003CEAFC = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +67,7 @@
 		D0BD34312C909DEA003CEAFC /* PantryPal */ = {
 			isa = PBXGroup;
 			children = (
+				D05155102C91F1510001E1B4 /* Models */,
 				D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */,
 				D0BD34342C909DEA003CEAFC /* ContentView.swift */,
 				D06E06FC2C909FE000918272 /* MainView.swift */,
@@ -149,6 +160,7 @@
 				D0BD34352C909DEA003CEAFC /* ContentView.swift in Sources */,
 				FBA2A88B2C90B7CA00478F97 /* IngredientesView.swift in Sources */,
 				FB1642592C90A2B400CF1B82 /* AgregarIngredientesView.swift in Sources */,
+				D05155122C91F1820001E1B4 /* Receta.swift in Sources */,
 				D06E06FD2C909FE000918272 /* MainView.swift in Sources */,
 				D0BD34332C909DEA003CEAFC /* PantryPalApp.swift in Sources */,
 			);

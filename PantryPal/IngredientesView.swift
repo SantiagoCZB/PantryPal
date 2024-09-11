@@ -1,10 +1,3 @@
-//
-//  IngredientesView.swift
-//  PantryPal
-//
-//  Created by Alumno on 10/09/24.
-//
-
 import SwiftUI
 
 struct IngredientesView: View {
@@ -64,7 +57,40 @@ struct IngredientesView: View {
                     .cornerRadius(10)
                     .padding(.horizontal, 10)
             }
+            
+            // Sección para mostrar las recetas obtenidas
+            if !recetas.isEmpty {
+                Text("Recetas Encontradas")
+                    .font(.headline)
+                    .padding(.top)
+                
+                List(recetas) { receta in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(receta.title)
+                                .font(.headline)
+                            Text("ID: \(receta.id)")
+                                .font(.subheadline)
+                        }
+                        
+                        Spacer()
+                        
+                        AsyncImage(url: URL(string: receta.image)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 80, height: 80)
+                        } placeholder: {
+                            ProgressView()
+                        }
+                    }
+                }
+            } else {
+                Text("No se encontraron recetas aún.")
+                    .padding(.top)
+            }
         }
+        .padding()
     }
     
     // Función para hacer fetch a la API de Spoonacular
@@ -99,13 +125,6 @@ struct IngredientesView: View {
             }
         }.resume()
     }
-}
-
-// Modelo para la respuesta de Spoonacular
-struct Receta: Identifiable, Decodable {
-    let id: Int
-    let title: String
-    let image: String
 }
 
 struct IngredientesView_Previews: PreviewProvider {
