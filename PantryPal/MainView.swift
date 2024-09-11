@@ -52,17 +52,7 @@ struct MainView: View {
                     }
                 }
                 Spacer()
-                Button(action: {
-                    selectedTab = 2
-                }) {
-                    VStack {
-                        Image(systemName: "person.circle")
-                            .resizable()
-                            .frame(width: 32, height: 32)
-                            .foregroundColor(selectedTab == 2 ? Color(red: 0/255, green: 156/255, blue: 166/255) : .gray)
-                    }
-                }
-                Spacer()
+                
                     
             }
             .padding(.bottom, 25)
