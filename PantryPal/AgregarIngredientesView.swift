@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct AgregarIngredientesView: View {
-    @Binding var ingredientes: [String] // Lista de ingredientes
-    @State private var nuevoIngrediente = "" // Para almacenar el nuevo ingrediente temporalmente
-    @State private var keyboardOffset: CGFloat = 0 // Para ajustar la vista cuando aparece el teclado
+    @Binding var ingredientes: [String] 
+    @State private var nuevoIngrediente = ""
+    @State private var keyboardOffset: CGFloat = 0
     
     var body: some View {
         VStack {
-            // Lista de ingredientes, que se va llenando desde abajo
+
             ScrollViewReader { scrollView in
                 ScrollView {
                     VStack {
@@ -30,9 +30,8 @@ struct AgregarIngredientesView: View {
                 }
             }
             
-            Spacer() // Asegura que el TextField y el botón estén abajo
+            Spacer()
             
-            // TextField y botón para agregar ingredientes
             HStack {
                 TextField("Ingrediente", text: $nuevoIngrediente)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -49,7 +48,7 @@ struct AgregarIngredientesView: View {
                 .padding(.trailing, 15)
             }
             .padding()
-            .offset(y: -keyboardOffset) // Ajuste con el teclado
+            .offset(y: -keyboardOffset)
             .animation(.easeInOut, value: keyboardOffset)
             .onAppear {
                 NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
@@ -67,10 +66,10 @@ struct AgregarIngredientesView: View {
     }
     
     private func agregarIngrediente() {
-        // Asegurarse de que el campo no esté vacío
+      
         if !nuevoIngrediente.isEmpty {
-            ingredientes.append(nuevoIngrediente) // Agregar el nuevo ingrediente a la lista
-            nuevoIngrediente = "" // Limpiar el campo después de agregar
+            ingredientes.append(nuevoIngrediente)
+            nuevoIngrediente = ""
         }
     }
     

@@ -94,7 +94,7 @@ struct IngredientesView: View {
                 let recetasResponse = try JSONDecoder().decode([Receta].self, from: data)
                 DispatchQueue.main.async {
                     self.recetas = recetasResponse
-                    self.showRecetasView = true // Navegar a la vista de recetas
+                    self.showRecetasView = true 
                 }
             } catch {
                 print("Error al decodificar la respuesta: \(error)")
