@@ -9,9 +9,13 @@ import SwiftUI
 
 @main
 struct PantryPalApp: App {
+    @StateObject private var predictionStatus = PredictionStatus()
     var body: some Scene {
+        
+        
         WindowGroup {
             IngredientesView()
+                .environmentObject(predictionStatus)
         }
     }
 }

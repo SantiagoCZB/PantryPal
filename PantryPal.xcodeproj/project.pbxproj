@@ -15,6 +15,20 @@
 		D0BD343A2C909DEA003CEAFC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0BD34392C909DEA003CEAFC /* Preview Assets.xcassets */; };
 		FB1642592C90A2B400CF1B82 /* AgregarIngredientesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */; };
 		FB16425B2C91F41000CF1B82 /* RecetasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB16425A2C91F41000CF1B82 /* RecetasView.swift */; };
+		FB1642612C9217F600CF1B82 /* IngredientesML.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = FB1642602C9217F600CF1B82 /* IngredientesML.mlmodel */; };
+		FB1642632C9218F200CF1B82 /* PredictionStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1642622C9218F200CF1B82 /* PredictionStatus.swift */; };
+		FB1642672C92197500CF1B82 /* LiveCameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1642662C92197500CF1B82 /* LiveCameraController.swift */; };
+		FB16426A2C9219AB00CF1B82 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1642692C9219AB00CF1B82 /* Helpers.swift */; };
+		FB16426C2C921A1300CF1B82 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB16426B2C921A1300CF1B82 /* Constants.swift */; };
+		FB2BFA962C933BCC00846676 /* LiveCameraRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BFA952C933BCC00846676 /* LiveCameraRepresentable.swift */; };
+		FB2BFA9A2C933BD700846676 /* ClassifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BFA972C933BD700846676 /* ClassifierViewModel.swift */; };
+		FB2BFA9D2C933C2300846676 /* CameraScanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BFA9C2C933C2300846676 /* CameraScanView.swift */; };
+		FB2BFAA42C933CE000846676 /* Classification.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BFA9F2C933CE000846676 /* Classification.swift */; };
+		FB2BFAA52C933CE000846676 /* mydata.geojson in Resources */ = {isa = PBXBuildFile; fileRef = FB2BFAA02C933CE000846676 /* mydata.geojson */; };
+		FB2BFAA82C933F5700846676 /* ShowSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BFAA72C933F5700846676 /* ShowSignView.swift */; };
+		FB2BFAAC2C933F8100846676 /* Chapeau-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB2BFAA92C933F8100846676 /* Chapeau-Bold.ttf */; };
+		FB2BFAAD2C933F8100846676 /* Chapeau-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FB2BFAAA2C933F8100846676 /* Chapeau-Medium.ttf */; };
+		FB2BFAAF2C933FC200846676 /* FontStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2BFAAE2C933FC200846676 /* FontStyles.swift */; };
 		FB9F24CE2C9209090074AC59 /* Ingredientes.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9F24CD2C9209090074AC59 /* Ingredientes.swift */; };
 		FBA2A88B2C90B7CA00478F97 /* IngredientesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA2A88A2C90B7CA00478F97 /* IngredientesView.swift */; };
 /* End PBXBuildFile section */
@@ -29,6 +43,20 @@
 		D0BD34392C909DEA003CEAFC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarIngredientesView.swift; sourceTree = "<group>"; };
 		FB16425A2C91F41000CF1B82 /* RecetasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecetasView.swift; sourceTree = "<group>"; };
+		FB1642602C9217F600CF1B82 /* IngredientesML.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = IngredientesML.mlmodel; sourceTree = "<group>"; };
+		FB1642622C9218F200CF1B82 /* PredictionStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PredictionStatus.swift; sourceTree = "<group>"; };
+		FB1642662C92197500CF1B82 /* LiveCameraController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveCameraController.swift; sourceTree = "<group>"; };
+		FB1642692C9219AB00CF1B82 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		FB16426B2C921A1300CF1B82 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FB2BFA952C933BCC00846676 /* LiveCameraRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveCameraRepresentable.swift; sourceTree = "<group>"; };
+		FB2BFA972C933BD700846676 /* ClassifierViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassifierViewModel.swift; sourceTree = "<group>"; };
+		FB2BFA9C2C933C2300846676 /* CameraScanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraScanView.swift; sourceTree = "<group>"; };
+		FB2BFA9F2C933CE000846676 /* Classification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classification.swift; sourceTree = "<group>"; };
+		FB2BFAA02C933CE000846676 /* mydata.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mydata.geojson; sourceTree = "<group>"; };
+		FB2BFAA72C933F5700846676 /* ShowSignView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowSignView.swift; sourceTree = "<group>"; };
+		FB2BFAA92C933F8100846676 /* Chapeau-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chapeau-Bold.ttf"; sourceTree = "<group>"; };
+		FB2BFAAA2C933F8100846676 /* Chapeau-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Chapeau-Medium.ttf"; sourceTree = "<group>"; };
+		FB2BFAAE2C933FC200846676 /* FontStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontStyles.swift; sourceTree = "<group>"; };
 		FB9F24CD2C9209090074AC59 /* Ingredientes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredientes.swift; sourceTree = "<group>"; };
 		FBA2A88A2C90B7CA00478F97 /* IngredientesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +75,8 @@
 		D05155102C91F1510001E1B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FB1642622C9218F200CF1B82 /* PredictionStatus.swift */,
+				FB1642602C9217F600CF1B82 /* IngredientesML.mlmodel */,
 				D05155112C91F1820001E1B4 /* Receta.swift */,
 				D05155152C9200D60001E1B4 /* RecetaDetalle.swift */,
 				FB9F24CD2C9209090074AC59 /* Ingredientes.swift */,
@@ -73,12 +103,18 @@
 		D0BD34312C909DEA003CEAFC /* PantryPal */ = {
 			isa = PBXGroup;
 			children = (
+				FB2BFAAE2C933FC200846676 /* FontStyles.swift */,
+				FB2BFAAB2C933F8100846676 /* fonts */,
+				FB2BFAA12C933CE000846676 /* Data */,
+				FB1642642C92195300CF1B82 /* Foundation */,
 				D05155102C91F1510001E1B4 /* Models */,
 				D0BD34322C909DEA003CEAFC /* PantryPalApp.swift */,
 				FB1642582C90A2B400CF1B82 /* AgregarIngredientesView.swift */,
 				FBA2A88A2C90B7CA00478F97 /* IngredientesView.swift */,
 				FB16425A2C91F41000CF1B82 /* RecetasView.swift */,
 				D05155132C9200A60001E1B4 /* RecetaDetalleView.swift */,
+				FB2BFA9C2C933C2300846676 /* CameraScanView.swift */,
+				FB2BFAA72C933F5700846676 /* ShowSignView.swift */,
 				D0BD34362C909DEA003CEAFC /* Assets.xcassets */,
 				D0BD34382C909DEA003CEAFC /* Preview Content */,
 			);
@@ -91,6 +127,52 @@
 				D0BD34392C909DEA003CEAFC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FB1642642C92195300CF1B82 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				FB2BFA972C933BD700846676 /* ClassifierViewModel.swift */,
+				FB1642682C92199A00CF1B82 /* Helpers */,
+				FB1642652C92195F00CF1B82 /* CameraViewControllers */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		FB1642652C92195F00CF1B82 /* CameraViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FB1642662C92197500CF1B82 /* LiveCameraController.swift */,
+				FB2BFA952C933BCC00846676 /* LiveCameraRepresentable.swift */,
+			);
+			path = CameraViewControllers;
+			sourceTree = "<group>";
+		};
+		FB1642682C92199A00CF1B82 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FB1642692C9219AB00CF1B82 /* Helpers.swift */,
+				FB16426B2C921A1300CF1B82 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FB2BFAA12C933CE000846676 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FB2BFA9F2C933CE000846676 /* Classification.swift */,
+				FB2BFAA02C933CE000846676 /* mydata.geojson */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FB2BFAAB2C933F8100846676 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FB2BFAA92C933F8100846676 /* Chapeau-Bold.ttf */,
+				FB2BFAAA2C933F8100846676 /* Chapeau-Medium.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,7 +233,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB2BFAAD2C933F8100846676 /* Chapeau-Medium.ttf in Resources */,
 				D0BD343A2C909DEA003CEAFC /* Preview Assets.xcassets in Resources */,
+				FB2BFAAC2C933F8100846676 /* Chapeau-Bold.ttf in Resources */,
+				FB2BFAA52C933CE000846676 /* mydata.geojson in Resources */,
 				D0BD34372C909DEA003CEAFC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,12 +249,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBA2A88B2C90B7CA00478F97 /* IngredientesView.swift in Sources */,
+				FB2BFA962C933BCC00846676 /* LiveCameraRepresentable.swift in Sources */,
 				FB1642592C90A2B400CF1B82 /* AgregarIngredientesView.swift in Sources */,
+				FB1642632C9218F200CF1B82 /* PredictionStatus.swift in Sources */,
 				D05155122C91F1820001E1B4 /* Receta.swift in Sources */,
+				FB1642672C92197500CF1B82 /* LiveCameraController.swift in Sources */,
 				FB16425B2C91F41000CF1B82 /* RecetasView.swift in Sources */,
+				FB2BFA9A2C933BD700846676 /* ClassifierViewModel.swift in Sources */,
+				FB2BFA9D2C933C2300846676 /* CameraScanView.swift in Sources */,
+				FB1642612C9217F600CF1B82 /* IngredientesML.mlmodel in Sources */,
+				FB2BFAA42C933CE000846676 /* Classification.swift in Sources */,
+				FB16426C2C921A1300CF1B82 /* Constants.swift in Sources */,
+				FB2BFAA82C933F5700846676 /* ShowSignView.swift in Sources */,
+				FB16426A2C9219AB00CF1B82 /* Helpers.swift in Sources */,
 				D05155162C9200D60001E1B4 /* RecetaDetalle.swift in Sources */,
 				D0BD34332C909DEA003CEAFC /* PantryPalApp.swift in Sources */,
 				FB9F24CE2C9209090074AC59 /* Ingredientes.swift in Sources */,
+				FB2BFAAF2C933FC200846676 /* FontStyles.swift in Sources */,
 				D05155142C9200A60001E1B4 /* RecetaDetalleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
