@@ -1,54 +1,61 @@
-//
-//  CameraScanView.swift
-//  prueba
-//
-//  Created by Alumno on 11/01/24.
-//
 import SwiftUI
 
 struct CameraScanView: View {
     @EnvironmentObject var predictionStatus: PredictionStatus
     @StateObject var classifierViewModel = ClassifierViewModel()
-    private(set) var labelData: Classification
     
-    @State private var scan = "unlabeled"
-    
+    // Closure para pasar el ingrediente de vuelta a la vista principal
+    var onIngredientAdded: (String) -> Void
+
     var body: some View {
         let predictionLabel = predictionStatus.topLabel
+        let confidence = predictionStatus.topConfidence
+        
         GeometryReader { geo in
             ZStack(alignment: .center){
                 Color(.systemBackground).ignoresSafeArea()
                 
-                VStack(alignment: .center){
-                    
-                    VStack() {
-                        ShowSignView(labelData: classifierViewModel.getPredictionData(label: predictionLabel))
+                VStack(alignment: .center) {
+                    // Cámara más pequeña y arriba
+                    VStack {
+                        LiveCameraRepresentable() {
+                            // Actualizamos la predicción
+                            predictionStatus.setLivePrediction(with: $0, label: $1, confidence: String($2))
+                            print("Prediction label: \($1), confidence: \($2)")  // Asegúrate de que esto funciona correctamente
+                        }
+                        .frame(width: geo.size.width * 0.9, height: geo.size.height * 0.4)  // Cámara más pequeña y más arriba
                     }
                     
-                    VStack() {
-                        LiveCameraRepresentable() {
-                            predictionStatus.setLivePrediction(with: $0, label: $1, confidence: $2)
-                        }
-                        .frame(width: geo.size.width * 0.5)
-                        
-                        
-                    }// VStack
-                    .onAppear(perform: classifierViewModel.loadJSON)
+                    Spacer() // Espaciado entre la cámara y la predicción
+
+                    // Mostrar la predicción y confianza abajo
+                    ShowSignView(labelData: Classification(label: predictionLabel, confidence: confidence))
+                        .padding()
                     
-                        
-                }//VStack
-                
-            }//ZStack
-        } //Geo
+                    // Botón para agregar el ingrediente actual
+                    Button(action: {
+                        // Añade solo la predicción, sin la confianza
+                        onIngredientAdded(predictionLabel)
+                    }) {
+                        Text("Agregar ingrediente")
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .padding(.horizontal, 10)
+                    }
+                    
+                    Spacer()
+                }
+            }
+        } // Geo
     }
 }
 
-struct CameraScanViewPreviews: PreviewProvider {
+struct CameraScanView_Previews: PreviewProvider {
     static var previews: some View {
-        CameraScanView(labelData: Classification())
+        CameraScanView(onIngredientAdded: { _ in })
+            .environmentObject(PredictionStatus())
     }
 }
-
-
- 
-

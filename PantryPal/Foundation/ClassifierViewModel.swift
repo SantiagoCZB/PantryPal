@@ -13,20 +13,21 @@ final class ClassifierViewModel: ObservableObject {
     
     func loadJSON() {
         print("load JSON")
-        if let url = Bundle.main.url(forResource: "mydata", withExtension: "geojson") {
+        if let url = Bundle.main.url(forResource: "mydata", withExtension: "json") { // Cambia .geojson a .json
             do {
                 let jsonData = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
                 classifierData = try decoder.decode([Classification].self, from: jsonData)
             } catch {
-                print(error)
+                print("Error al decodificar JSON: \(error)")
             }
         } else {
-            print("could not find data")
+            print("No se pudo encontrar el archivo mydata.json")
         }
     }
     
-    func getPredictionData(label: String) -> Classification {
-        return classifierData.filter { $0.label == label }.first ?? Classification()
+    func getPredictionData(label: String, confidence: Double) -> Classification {
+        return classifierData.filter { $0.label == label }.first ?? Classification(label: label, confidence: confidence)
     }
+
 }

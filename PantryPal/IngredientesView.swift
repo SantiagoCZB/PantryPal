@@ -5,6 +5,7 @@ struct IngredientesView: View {
     @State private var showAgregarIngredientes = false
     @State private var recetas: [Receta] = [] // Array para guardar las recetas
     @State private var showRecetasView = false // Variable para manejar la navegación
+    @EnvironmentObject var predictionStatus: PredictionStatus // EnvironmentObject para PredictionStatus
 
     var body: some View {
         NavigationView {
@@ -63,6 +64,19 @@ struct IngredientesView: View {
                 NavigationLink(destination: RecetasView(recetas: recetas), isActive: $showRecetasView) {
                     EmptyView()
                 }
+                
+                // Botón para ir a CameraScanView
+                NavigationLink(destination: CameraScanView(onIngredientAdded: { newIngredient in
+                    self.ingredientes.append(newIngredient)  // Agrega la predicción a la lista de ingredientes
+                })) {
+                    Text("Escanear con cámara")
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.orange)
+                        .cornerRadius(10)
+                        .padding(.horizontal, 10)
+                }
             }
             .padding()
         }
@@ -106,5 +120,6 @@ struct IngredientesView: View {
 struct IngredientesView_Previews: PreviewProvider {
     static var previews: some View {
         IngredientesView()
+            .environmentObject(PredictionStatus()) // Añade PredictionStatus al entorno
     }
 }

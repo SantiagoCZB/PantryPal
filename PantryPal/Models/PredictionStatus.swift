@@ -1,10 +1,3 @@
-//
-//  PredictionStatus.swift
-//  Proyecto_Equipo1
-//
-//  Created by Alumno on 11/10/23.
-//
-
 import Foundation
 import SwiftUI
 import Vision
@@ -14,7 +7,7 @@ class PredictionStatus: ObservableObject {
     // TODO - replace with the name of your classifier
     @Published var modelObject = IngredientesML()
     @Published var topLabel = ""
-    @Published var topConfidence = ""
+    @Published var topConfidence: Double = 0.0  // Cambia de String a Double
     
     // Live prediction results
     @Published var livePrediction: LivePredictionResults = [:]
@@ -22,7 +15,8 @@ class PredictionStatus: ObservableObject {
     func setLivePrediction(with results: LivePredictionResults, label: String, confidence: String) {
         livePrediction = results
         topLabel = label
-        topConfidence = confidence
+        topConfidence = Double(confidence) ?? 0.0  // Convertimos la confianza a Double
     }
-}
 
+
+}
