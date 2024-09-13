@@ -3,12 +3,12 @@ import SwiftUI
 struct AgregarIngredientesView: View {
     @Binding var ingredientes: [String]
     @State private var nuevoIngrediente = ""
-    @State private var keyboardOffset: CGFloat = 0
+    @State private var keyboardHeight: CGFloat = 0
     
     var body: some View {
-        VStack {
-            // Cambiar ScrollView a List para soportar swipe-to-delete
-            List {
+        ScrollView {
+            VStack {
+                // Lista de ingredientes con posibilidad de eliminar
                 ForEach(ingredientes, id: \.self) { ingrediente in
                     Text(ingrediente)
                         .padding()
@@ -17,42 +17,47 @@ struct AgregarIngredientesView: View {
                         .cornerRadius(8)
                         .padding(.vertical, 5)
                 }
-                .onDelete(perform: eliminarIngrediente) // Soporte para eliminar al deslizar
-            }
-            
-            Spacer()
-            
-            HStack {
-                TextField("Ingrediente", text: $nuevoIngrediente)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.leading, 15)
-                    .frame(height: 40)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
+                .onDelete(perform: eliminarIngrediente)
+                
+                Spacer()
+                
+                // Campo de texto y botón para agregar el ingrediente
+                HStack {
+                    TextField("Ingrediente", text: $nuevoIngrediente)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding(.leading, 15)
+                        .frame(height: 40)
+                        .background(Color(.systemGray6))
+                        .cornerRadius(8)
 
-                Button(action: agregarIngrediente) {
-                    Image(systemName: "plus.circle.fill")
-                        .foregroundColor(.blue)
-                        .font(.system(size: 30))
-                }
-                .padding(.trailing, 15)
-            }
-            .padding()
-            .offset(y: -keyboardOffset)
-            .animation(.easeInOut, value: keyboardOffset)
-            .onAppear {
-                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-                    if let frame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
-                        self.keyboardOffset = frame.height
+                    Button(action: agregarIngrediente) {
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 30))
                     }
+                    .padding(.trailing, 15)
                 }
-                NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-                    self.keyboardOffset = 0
+                .padding()
+                .background(Color.white)  // Fondo para que no se mezcle con la lista
+            }
+            .padding(.bottom, keyboardHeight)  // Ajuste para el teclado
+            .animation(.easeInOut(duration: 0.3), value: keyboardHeight)
+        }
+        .onAppear {
+            // Observadores para ajustar el desplazamiento cuando aparece el teclado
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    self.keyboardHeight = keyboardFrame.height - 40  // Ajusta según la altura visible que necesitas
                 }
+            }
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                self.keyboardHeight = 0
             }
         }
-        .padding(.bottom, keyboardOffset)
-        .animation(.easeInOut(duration: 0.3), value: keyboardOffset)
+        .onDisappear {
+            // Eliminar los observadores cuando la vista desaparezca
+            NotificationCenter.default.removeObserver(self)
+        }
     }
     
     private func agregarIngrediente() {
