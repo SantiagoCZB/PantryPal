@@ -77,6 +77,7 @@ struct IngredientesView: View {
                         .cornerRadius(10)
                         .padding(.horizontal, 10)
                 }
+                .padding(.top, 10.0)
             }
             .padding()
         }
